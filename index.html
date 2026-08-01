@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMW Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">BMW <span>LUXURY</span></div>
+        <nav>
+            <button class="nav-link active" data-target="overview">Overview</button>
+            <button class="nav-link" data-target="specs">Specifications</button>
+            <button class="nav-link" data-target="config">Configurator</button>
+        </nav>
+        <button class="like-btn" id="likeBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <span id="likesCount">1,425</span>
+        </button>
+    </header>
+
+    <main class="hero-container" id="heroMain">
+        
+        <section class="gallery-section" id="overview">
+            <div class="badge-wrapper">
+                <button class="badge clickable-badge" id="modelClassBtn">PERFORMANCE</button>
+                <button class="badge highlight clickable-badge" id="modelYearBtn">COMPETITION</button>
+            </div>
+
+            <!-- Display with Slider Arrow Buttons -->
+            <div class="main-display">
+                <button class="arrow-btn prev-btn" id="prevBtn" aria-label="Previous car">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                
+                <img id="mainImage" class="fade-element" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaVh5nsx_vVWTjJOGeNwHX8yxCMaIwPYcGeqX2avD9EQ&s=10" alt="BMW Model">
+                
+                <button class="arrow-btn next-btn" id="nextBtn" aria-label="Next car">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+            </div>
+
+            <!-- Thumbnails -->
+            <div class="thumbnails" id="thumbnails">
+                <div class="thumb active" data-model="m5">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaVh5nsx_vVWTjJOGeNwHX8yxCMaIwPYcGeqX2avD9EQ&s=10" alt="BMW M5 F90">
+                    <span>M5 F90</span>
+                </div>
+                <div class="thumb" data-model="i8">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxms7A_FIveQYaas88Rm86uALUjMXvj5AETAr5repCWQ&s=10" alt="BMW i8">
+                    <span>BMW i8</span>
+                </div>
+                <div class="thumb" data-model="x7">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjdUcakTpyYqTCV26dzJPDpYuSekr2uNbFR7wlLEELAg&s=10" alt="BMW X7">
+                    <span>BMW X7</span>
+                </div>
+            </div>
+        </section>
+
+        <aside class="info-section">
+            <div class="title-block">
+                <div class="animate-wrap"><span class="sub-heading fade-element" id="modelSub">SPORTS SEDAN</span></div>
+                <div class="animate-wrap"><h1 class="fade-element" id="modelTitle">BMW <span>M5 F90</span></h1></div>
+                <div class="animate-wrap"><p class="description fade-element" id="modelDesc">The legend of the M division featuring M xDrive all-wheel drive and a 4.4-liter V8 TwinPower Turbo engine.</p></div>
+            </div>
+
+            <div class="specs-list" id="specs">
+                <div class="spec-card">
+                    <div class="animate-wrap"><span class="spec-num fade-element" id="specAccel">3.3 <small>sec</small></span></div>
+                    <span class="spec-desc">0–100 km/h</span>
+                </div>
+                <div class="spec-card">
+                    <div class="animate-wrap"><span class="spec-num fade-element" id="specPower">625 <small>hp</small></span></div>
+                    <span class="spec-desc">Horsepower</span>
+                </div>
+                <div class="spec-card">
+                    <div class="animate-wrap"><span class="spec-num fade-element" id="specSpeed">305 <small>km/h</small></span></div>
+                    <span class="spec-desc">Top Speed</span>
+                </div>
+            </div>
+
+            <div class="configurator" id="config">
+                <h3>Select Exterior Color:</h3>
+                <div class="color-picker">
+                    <button class="color-btn active" data-color="frozen" style="--c: #1e293b;">Frozen Grey</button>
+                    <button class="color-btn" data-color="blue" style="--c: #1e40af;">Marina Blue</button>
+                    <button class="color-btn" data-color="red" style="--c: #b91c1c;">Toronto Red</button>
+                </div>
+            </div>
+
+            <div class="action-block">
+                <a href="https://www.bmw.com" target="_blank" class="btn-primary">
+                    <span>Book Test Drive</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- Overlay Screen for Coming Soon -->
+    <div class="coming-soon-screen hidden" id="comingSoonScreen">
+        <div class="coming-soon-content">
+            <h2>Coming Soon...</h2>
+            <p>Future Icon concept and exclusive details are currently under development.</p>
+            <button class="btn-primary" id="backBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                <span>Back</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
