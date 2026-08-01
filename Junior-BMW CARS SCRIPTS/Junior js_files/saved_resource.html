@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<!-- saved from url=(0012)about:srcdoc -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMW Experience</title>
+    <link rel="stylesheet" href="https://go.junior-it.uz/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --bg-main: #090d16;
+    --bg-card: #111827;
+    --bg-glass: rgba(17, 24, 39, 0.85);
+    --border: rgba(255, 255, 255, 0.08);
+    --text-main: #ffffff;
+    --text-muted: #9ca3af;
+    --radius: 16px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-main);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+.logo span { color: var(--primary); }
+
+.navbar nav {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-link {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.nav-link.active, .nav-link:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.like-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.like-btn:hover, .like-btn.active {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+.like-btn.active svg { fill: #ef4444; }
+
+/* Main Container */
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 30px;
+    padding: 30px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    flex: 1;
+}
+
+.gallery-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.badge-wrapper {
+    display: flex;
+    gap: 10px;
+}
+
+.badge {
+    background: rgba(37, 99, 235, 0.15);
+    color: var(--primary);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.badge.highlight {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    border-color: var(--border);
+}
+
+.clickable-badge {
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.clickable-badge:hover {
+    border-color: var(--primary);
+    background: rgba(37, 99, 235, 0.25);
+    color: var(--text-main);
+    transform: translateY(-1px);
+}
+
+/* Main Display & Arrow Buttons */
+.main-display {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.main-display img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.arrow-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(9, 13, 22, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+    transition: var(--transition);
+}
+
+.arrow-btn:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
+}
+
+.prev-btn { left: 16px; }
+.next-btn { right: 16px; }
+
+.thumbnails {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.thumb {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: var(--transition);
+}
+
+.thumb img {
+    width: 60px;
+    height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.thumb span {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.thumb.active, .thumb:hover {
+    border-color: var(--primary);
+    background: rgba(37, 99, 235, 0.1);
+}
+
+.thumb.active span { color: var(--text-main); }
+
+/* Right Info Section */
+.info-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.animate-wrap {
+    overflow: hidden;
+}
+
+.sub-heading {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: 2px;
+    display: inline-block;
+}
+
+.title-block h1 {
+    font-size: 34px;
+    font-weight: 800;
+    margin: 6px 0 12px 0;
+}
+.title-block h1 span { color: var(--primary); }
+
+.description {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Animations */
+.fade-out {
+    opacity: 0 !important;
+    transform: translateY(8px) scale(0.98);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.fade-in {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.configurator h3 {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.color-picker {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.color-btn {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+.color-btn::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--c);
+}
+
+.color-btn.active, .color-btn:hover {
+    border-color: var(--primary);
+    background: rgba(37, 99, 235, 0.15);
+}
+
+.specs-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.spec-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    padding: 12px 8px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.spec-num {
+    display: block;
+    font-size: 18px;
+    font-weight: 800;
+}
+.spec-num small { font-size: 11px; color: var(--primary); }
+
+.spec-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+/* Coming Soon Overlay */
+.coming-soon-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(9, 13, 22, 0.95);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.coming-soon-screen.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.coming-soon-content {
+    text-align: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 50px 40px;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 450px;
+}
+
+.coming-soon-content h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.coming-soon-content p {
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+@media (max-width: 900px) {
+    .hero-container { grid-template-columns: 1fr; }
+}</style>
+    <script>
+      ['log', 'warn', 'error', 'info'].forEach(function(level) {
+        var original = console[level];
+        console[level] = function() {
+          parent.postMessage({
+            type: 'junior-console',
+            level: level,
+            message: Array.from(arguments).map(String).join(' ')
+          }, '*');
+          original.apply(console, arguments);
+        };
+      });
+      window.addEventListener('error', function(event) {
+        parent.postMessage({
+          type: 'junior-console',
+          level: 'error',
+          message: event.message
+        }, '*');
+      });
+    </script>
+  </head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">BMW <span>LUXURY</span></div>
+        <nav>
+            <button class="nav-link active" data-target="overview">Overview</button>
+            <button class="nav-link" data-target="specs">Specifications</button>
+            <button class="nav-link" data-target="config">Configurator</button>
+        </nav>
+        <button class="like-btn" id="likeBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <span id="likesCount">1,425</span>
+        </button>
+    </header>
+
+    <main class="hero-container" id="heroMain">
+        
+        <section class="gallery-section" id="overview">
+            <div class="badge-wrapper">
+                <button class="badge clickable-badge" id="modelClassBtn">HYBRID SPORT</button>
+                <button class="badge highlight clickable-badge" id="modelYearBtn">FUTURE ICON</button>
+            </div>
+
+            <!-- Display with Slider Arrow Buttons -->
+            <div class="main-display">
+                <button class="arrow-btn prev-btn" id="prevBtn" aria-label="Previous car">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                
+                <img id="mainImage" class="fade-element fade-in" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxms7A_FIveQYaas88Rm86uALUjMXvj5AETAr5repCWQ&amp;s=10" alt="BMW Model">
+                
+                <button class="arrow-btn next-btn" id="nextBtn" aria-label="Next car">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+            </div>
+
+            <!-- Thumbnails -->
+            <div class="thumbnails" id="thumbnails">
+                <div class="thumb" data-model="m5">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaVh5nsx_vVWTjJOGeNwHX8yxCMaIwPYcGeqX2avD9EQ&amp;s=10" alt="BMW M5 F90">
+                    <span>M5 F90</span>
+                </div>
+                <div class="thumb active" data-model="i8">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxms7A_FIveQYaas88Rm86uALUjMXvj5AETAr5repCWQ&amp;s=10" alt="BMW i8">
+                    <span>BMW i8</span>
+                </div>
+                <div class="thumb" data-model="x7">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjdUcakTpyYqTCV26dzJPDpYuSekr2uNbFR7wlLEELAg&amp;s=10" alt="BMW X7">
+                    <span>BMW X7</span>
+                </div>
+            </div>
+        </section>
+
+        <aside class="info-section">
+            <div class="title-block">
+                <div class="animate-wrap"><span class="sub-heading fade-element fade-in" id="modelSub">HYBRID SPORTS CAR</span></div>
+                <div class="animate-wrap"><h1 class="fade-element fade-in" id="modelTitle">BMW <span>i8</span></h1></div>
+                <div class="animate-wrap"><p class="description fade-element fade-in" id="modelDesc">Innovative hybrid sports car featuring butterfly doors and a full carbon-fiber monocoque chassis.</p></div>
+            </div>
+
+            <div class="specs-list" id="specs">
+                <div class="spec-card">
+                    <div class="animate-wrap"><span class="spec-num fade-element fade-in" id="specAccel">4.4 <small>sec</small></span></div>
+                    <span class="spec-desc">0–100 km/h</span>
+                </div>
+                <div class="spec-card">
+                    <div class="animate-wrap"><span class="spec-num fade-element fade-in" id="specPower">374 <small>hp</small></span></div>
+                    <span class="spec-desc">Horsepower</span>
+                </div>
+                <div class="spec-card">
+                    <div class="animate-wrap"><span class="spec-num fade-element fade-in" id="specSpeed">250 <small>km/h</small></span></div>
+                    <span class="spec-desc">Top Speed</span>
+                </div>
+            </div>
+
+            <div class="configurator" id="config">
+                <h3>Select Exterior Color:</h3>
+                <div class="color-picker">
+                    <button class="color-btn active" data-color="frozen" style="--c: #1e293b;">Frozen Grey</button>
+                    <button class="color-btn" data-color="blue" style="--c: #1e40af;">Marina Blue</button>
+                    <button class="color-btn" data-color="red" style="--c: #b91c1c;">Toronto Red</button>
+                </div>
+            </div>
+
+            <div class="action-block">
+                <a href="https://www.bmw.com/" target="_blank" class="btn-primary">
+                    <span>Book Test Drive</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- Overlay Screen for Coming Soon -->
+    <div class="coming-soon-screen hidden" id="comingSoonScreen">
+        <div class="coming-soon-content">
+            <h2>Coming Soon...</h2>
+            <p>Future Icon concept and exclusive details are currently under development.</p>
+            <button class="btn-primary" id="backBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                <span>Back</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://go.junior-it.uz/script.js"></script>
+<script>// BMW Data
+const bmwData = {
+    m5: {
+        title: 'BMW <span>M5 F90</span>',
+        sub: 'SPORTS SEDAN',
+        badgeClass: 'PERFORMANCE',
+        badgeYear: 'COMPETITION',
+        desc: 'The legend of the M division featuring M xDrive all-wheel drive and a 4.4-liter V8 TwinPower Turbo engine.',
+        accel: '3.3',
+        power: '625',
+        speed: '305',
+        images: {
+            frozen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaVh5nsx_vVWTjJOGeNwHX8yxCMaIwPYcGeqX2avD9EQ&s=10',
+            blue: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQShYLnqumM6HRzSTvPQP0pSuFvW67-bbbfXdPKrBhAMA&s=10',
+            red: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq9Ucue7xk-KKv8PPr_RzjtlSl6bZ31SCRsiESwcbTfw&s=10'
+        }
+    },
+    i8: {
+        title: 'BMW <span>i8</span>',
+        sub: 'HYBRID SPORTS CAR',
+        badgeClass: 'HYBRID SPORT',
+        badgeYear: 'FUTURE ICON',
+        desc: 'Innovative hybrid sports car featuring butterfly doors and a full carbon-fiber monocoque chassis.',
+        accel: '4.4',
+        power: '374',
+        speed: '250',
+        images: {
+            frozen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxms7A_FIveQYaas88Rm86uALUjMXvj5AETAr5repCWQ&s=10',
+            blue: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN1fdZSRFdvC1kEhdq7fWuDKkiCZofLC9YPmWSG73tag&s=10',
+            red: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHF3K01PVppfH2bY9Tq5816MGl7YnbgYbvzbqL7-fiWw&s=10'
+        }
+    },
+    x7: {
+        title: 'BMW <span>X7</span>',
+        sub: 'FLAGSHIP SUV',
+        badgeClass: 'SAV LUXURY',
+        badgeYear: '7-SEATER',
+        desc: 'Ultimate luxury experience, offering 7 spacious seats and supreme comfort paired with twin-turbo power.',
+        accel: '4.7',
+        power: '530',
+        speed: '250',
+        images: {
+            frozen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjdUcakTpyYqTCV26dzJPDpYuSekr2uNbFR7wlLEELAg&s=10',
+            blue: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9mXKxyXBgj5ZODJ_oKNMi4NOND8IuBr4LWmQrBAsZ7MVWU0l9FGj2RJo&s=10',
+            red: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHXHAmeB8hEhgNOPQ5yL5hoJmMBLf4CErbkVu3cN-y-g&s=10'
+        }
+    }
+};
+
+const modelKeys = ['m5', 'i8', 'x7'];
+let currentIndex = 0;
+let currentColor = 'frozen';
+
+const mainImage = document.getElementById('mainImage');
+const thumbs = document.querySelectorAll('.thumb');
+const colorBtns = document.querySelectorAll('.color-btn');
+const fadeElements = document.querySelectorAll('.fade-element');
+
+// Update UI display with Smooth Animation
+function updateDisplay(isColorChange = false) {
+    const modelKey = modelKeys[currentIndex];
+    const data = bmwData[modelKey];
+
+    if (!data) return;
+
+    // Update active thumb
+    thumbs.forEach(t => {
+        t.classList.toggle('active', t.getAttribute('data-model') === modelKey);
+    });
+
+    if (isColorChange) {
+        if (data.images[currentColor]) {
+            mainImage.src = data.images[currentColor];
+        }
+        return;
+    }
+
+    // Smooth fade out
+    fadeElements.forEach(el => {
+        el.classList.remove('fade-in');
+        el.classList.add('fade-out');
+    });
+
+    setTimeout(() => {
+        // Swap content
+        mainImage.src = data.images[currentColor] || data.images.frozen;
+        document.getElementById('modelTitle').innerHTML = data.title;
+        document.getElementById('modelSub').textContent = data.sub;
+        document.getElementById('modelClassBtn').textContent = data.badgeClass;
+        document.getElementById('modelYearBtn').textContent = data.badgeYear;
+        document.getElementById('modelDesc').textContent = data.desc;
+
+        document.getElementById('specAccel').innerHTML = `${data.accel} <small>sec</small>`;
+        document.getElementById('specPower').innerHTML = `${data.power} <small>hp</small>`;
+        document.getElementById('specSpeed').innerHTML = `${data.speed} <small>km/h</small>`;
+
+        // Smooth fade in
+        fadeElements.forEach(el => {
+            el.classList.remove('fade-out');
+            el.classList.add('fade-in');
+        });
+    }, 250);
+}
+
+// Arrow Navigation Events
+document.getElementById('prevBtn').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + modelKeys.length) % modelKeys.length;
+    updateDisplay(false);
+});
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % modelKeys.length;
+    updateDisplay(false);
+});
+
+// Thumbnails Click Event
+thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+        const selectedModel = thumb.getAttribute('data-model');
+        currentIndex = modelKeys.indexOf(selectedModel);
+        updateDisplay(false);
+    });
+});
+
+// Color Picker Click Event
+colorBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        colorBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        currentColor = btn.getAttribute('data-color');
+        updateDisplay(true);
+    });
+});
+
+// Navbar Navigation Links
+const navLinks = document.querySelectorAll('.nav-link');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        const targetId = link.getAttribute('data-target');
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    });
+});
+
+// Likes System
+const likeBtn = document.getElementById('likeBtn');
+const likesCount = document.getElementById('likesCount');
+let likes = 1425;
+let isLiked = false;
+
+likeBtn.addEventListener('click', () => {
+    isLiked = !isLiked;
+    likes += isLiked ? 1 : -1;
+    likeBtn.classList.toggle('active', isLiked);
+    likesCount.textContent = likes.toLocaleString();
+});
+
+// Coming Soon Screen Trigger (Clicking any top badge)
+const modelClassBtn = document.getElementById('modelClassBtn');
+const modelYearBtn = document.getElementById('modelYearBtn');
+const comingSoonScreen = document.getElementById('comingSoonScreen');
+const backBtn = document.getElementById('backBtn');
+
+function openComingSoon() {
+    comingSoonScreen.classList.remove('hidden');
+}
+
+if (modelClassBtn) modelClassBtn.addEventListener('click', openComingSoon);
+if (modelYearBtn) modelYearBtn.addEventListener('click', openComingSoon);
+
+backBtn.addEventListener('click', () => {
+    comingSoonScreen.classList.add('hidden');
+});</script>
+</body></html>
